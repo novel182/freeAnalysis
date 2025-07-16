@@ -1,0 +1,23 @@
+{
+  "name": "free_analy",
+  "version": "1.0.0",
+  "description": "Electron app to fetch recent games from chess.com and analyse the moves",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novel182/freeAnalysis.git"
+  },
+  "author": "Novel Poudel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/novel182/freeAnalysis/issues"
+  },
+  "homepage": "https://github.com/novel182/freeAnalysis#readme",
+  "devDependencies": {
+    "electron": "^37.2.1"
+  }
+}
