@@ -1,12 +1,23 @@
-import createGame from "../utils/createGame"
+import { useEffect, useState, use } from "react"
 import NotationBoard from "./NotationBoard"
+import useGame from "../hooks/useGame"
 
-const Visuals = async () => {
-    const game = await createGame()
+const Visuals = () => {
+    const [game, setGame] = useState()
+    const gameData = useGame()
+    useEffect(() => {
+        gameData.then(data => {setGame(data.game); console.log('Game data loaded:', game)})
+    }, [gameData])
+    if(!game) {
+        return <div>Loading...</div>
+    }
     return (
         <div>
             {/* Create board */}
-            <NotationBoard game={game}/>
+            <div className="">
+                <NotationBoard game={game}/>
+            </div>
+            
         </div>
     )
 }

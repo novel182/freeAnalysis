@@ -1,4 +1,4 @@
-const NotationBoard = (game) => {
+const NotationBoard = ({game}) => {
     const moves = game.history()
 
     return (
@@ -10,6 +10,7 @@ const NotationBoard = (game) => {
                         if(index % 2 === 0){
                             return (
                                 <tr key={index}>
+                                    <td>{index / 2 +1}</td>
                                     <td style={{ padding: "5px" }}>
                                         {move || ""}
                                     </td>
