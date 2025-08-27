@@ -14,7 +14,7 @@ const Visuals = () => {
     return (
         <div>
             {/* Create board */}
-            <div className="">
+            <div className="ml-2">
                 <NotationBoard game={game}/>
             </div>
             
