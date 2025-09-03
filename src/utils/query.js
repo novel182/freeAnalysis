@@ -12,7 +12,6 @@ const fetchURLsFromArchives = async () => {
 export const fetchLatestGameData = async () => {
     const urls = await fetchURLsFromArchives()
     const latestURL = urls.archives[urls.archives.length - 1]
-    console.log(latestURL)
 
     const monthlyGames = await fetchFromURL(latestURL)
     // cacheGameData(monthlyGames, latestURL)

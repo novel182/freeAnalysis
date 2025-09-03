@@ -1,10 +1,11 @@
 const NotationBoard = ({game}) => {
     const moves = game.history()
+    console.log(game.fen())
 
     return (
-        <div>
+        <div className="ml-4">
             <h3>Moves</h3>
-            <table style={{ borderCollapse: "collapse", width: "100%" }}>
+            <table className="w-full border-collapse">
                 <tbody>
                     {moves.map((move, index) => {
                         if(index % 2 === 0){

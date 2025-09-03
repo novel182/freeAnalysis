@@ -1,6 +1,7 @@
 import { useEffect, useState, use } from "react"
 import NotationBoard from "./NotationBoard"
 import useGame from "../hooks/useGame"
+import Board from "./Board"
 
 const Visuals = () => {
     const [game, setGame] = useState()
@@ -13,8 +14,8 @@ const Visuals = () => {
     }
     return (
         <div>
-            {/* Create board */}
-            <div className="ml-2">
+            <div className="flex justify-end overflow-hidden">
+                <Board game={game}/>
                 <NotationBoard game={game}/>
             </div>
             
