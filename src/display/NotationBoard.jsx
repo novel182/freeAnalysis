@@ -1,9 +1,8 @@
 const NotationBoard = ({game}) => {
     const moves = game.history()
-    console.log(game.fen())
 
     return (
-        <div className="ml-4">
+        <div className="ml-4 max-h">
             <h3>Moves</h3>
             <table className="w-full border-collapse">
                 <tbody>
