@@ -2,7 +2,7 @@ const NotationBoard = ({game}) => {
     const moves = game.history()
 
     return (
-        <div className="ml-4 max-h">
+        <div className="ml-4 w-[300px] max-h-[600px] overflow-y-auto">
             <h3>Moves</h3>
             <table className="w-full border-collapse">
                 <tbody>

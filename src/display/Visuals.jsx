@@ -1,4 +1,6 @@
 import { useEffect, useState, use } from "react"
+import 'stockfish/src/stockfish-17.1-8e4d048.js'
+
 import NotationBoard from "./NotationBoard"
 import useGame from "../hooks/useGame"
 import Board from "./Board"
@@ -13,7 +15,8 @@ const Visuals = () => {
     }, [gameData])
 
     useEffect(() => {
-        const fishWrkr = new Worker('public/stockfish-17.1-lite-51f59da.js')
+        // const fishWrkr = new Worker('stockfish/src/stockfish-17.1-8e4d048.js')
+        const fishWrkr = new Worker('public/stockfish-17.1-8e4d048.js')
         setWorker(fishWrkr)
     }, [])
 
