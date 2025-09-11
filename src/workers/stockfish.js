@@ -1,0 +1,1 @@
+const stockfish = new Worker('public/stockfish-17.1-8e4d048.js')

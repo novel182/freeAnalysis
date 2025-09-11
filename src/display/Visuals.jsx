@@ -1,44 +1,42 @@
-import { useEffect, useState, use } from "react"
-import 'stockfish/src/stockfish-17.1-8e4d048.js'
+import { useEffect, useState } from "react"
 
 import NotationBoard from "./NotationBoard"
 import useGame from "../hooks/useGame"
 import Board from "./Board"
+import { captureEval, captureBestMove } from "../utils/captureResponses"
 
 const Visuals = () => {
     const [game, setGame] = useState()
     const gameData = useGame()
-    const [worker, setWorker] = useState()
+    const [evaluation, setEvaluation] = useState('0.00')
+    const [bestMove, setBestMove] = useState('')
+    const fish = new Worker('public/stockfish-17.1-single-a496a04.js')
 
     useEffect(() => {
         gameData.then(data => {setGame(data.game); console.log('Game data loaded:', game)})
+        fish.postMessage('position startpos')
+        fish.postMessage('eval')
     }, [gameData])
-
-    useEffect(() => {
-        // const fishWrkr = new Worker('stockfish/src/stockfish-17.1-8e4d048.js')
-        const fishWrkr = new Worker('public/stockfish-17.1-8e4d048.js')
-        setWorker(fishWrkr)
-    }, [])
 
     if(!game) {
         return <div>Loading...</div>
     }
 
-    worker.postMessage('uci')
-    worker.postMessage('ucinewgame')
-    worker.postMessage('position fen ' + game.fen())
-    worker.postMessage('go depth 10')
+    fish.onmessage = (event) => {
+        const evalResult = captureEval(event.data)
+        const bestMoveResult = captureBestMove(event.data)
 
-    worker.onmessage = (event) => {
-        const message = event.data
-        console.log(message)
+        if(evalResult) setEvaluation(evalResult)
+        if(bestMoveResult) setBestMove(bestMoveResult)
     }
+
+    console.log(evaluation, bestMove)
 
     return (
         <div>
             <div className="flex justify-end overflow-hidden">
                 <Board game={game}/>
-                <NotationBoard game={game}/>
+                <NotationBoard game={game} evaluation={evaluation}/>
             </div>
             
         </div>
