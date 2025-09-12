@@ -10,7 +10,7 @@ const Visuals = () => {
     const gameData = useGame()
     const [evaluation, setEvaluation] = useState('0.00')
     const [bestMove, setBestMove] = useState('')
-    const fish = new Worker('public/stockfish-17.1-single-a496a04.js')
+    const fish = new Worker('stockfish-17.1-single-a496a04.js')
 
     useEffect(() => {
         gameData.then(data => {setGame(data.game); console.log('Game data loaded:', game)})
